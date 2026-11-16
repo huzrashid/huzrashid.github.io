@@ -93,6 +93,8 @@ button.slot{width:100%;padding:0;border:0;background:none;text-align:left;font:i
 .w{grid-column:1/-1}
 .w .frame{aspect-ratio:16/9}
 .reels-row{display:contents}
+.work h3{grid-column:1/-1;margin:24px 0 -8px;font-size:1.1rem;color:var(--muted);scroll-margin-top:24px}
+.work h3:first-child{margin-top:0}
 
 .how{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
 .how p{color:var(--muted)}
@@ -181,20 +183,23 @@ footer{padding:28px 0 48px;color:var(--muted);font-size:.95rem;border-top:1px so
       <!-- TO ADD A SAMPLE: copy the first block. data-video is the web mp4 in /work,
            poster is its still. The clip previews muted on the page and plays with sound on click. No caption. -->
       <div class="work">
-        <button class="slot w" id="demo" type="button" data-video="work/promo-1.mp4" aria-label="Play dating app promo">
+        <h3 id="demo">Motion graphics</h3>
+        <button class="slot w" type="button" data-video="work/promo-1.mp4" aria-label="Play dating app promo">
           <div class="frame">
             <video src="work/promo-1.mp4" poster="work/promo-1.jpg" muted loop playsinline preload="none"></video>
             <span class="play">Play with sound</span>
           </div>
         </button>
-        <button class="slot w" id="long-form" type="button" data-video="work/longform-1.mp4" aria-label="Play YouTube video for a business educator">
+        <h3 id="long-form">Long form</h3>
+        <button class="slot w" type="button" data-video="work/longform-1.mp4" aria-label="Play YouTube video for a business educator">
           <div class="frame">
             <video src="work/longform-1.mp4" poster="work/longform-1.jpg" muted loop playsinline preload="none"></video>
             <span class="play">Play with sound</span>
           </div>
         </button>
+        <h3 id="reels">Short form</h3>
         <div class="reels-row">
-        <button class="slot v" id="reels" type="button" data-video="work/reel-1.mp4" aria-label="Play business coach reel">
+        <button class="slot v" type="button" data-video="work/reel-1.mp4" aria-label="Play business coach reel">
           <div class="frame">
             <video src="work/reel-1.mp4" poster="work/reel-1.jpg" muted loop playsinline preload="none"></video>
             <span class="play">Play with sound</span>
