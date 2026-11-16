@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HuzRashid | Video editor for founders and small brands</title>
+<meta name="description" content="HuzRashid edits SaaS demos, motion graphics, long-form content and reels for founders, personal brands and small businesses.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HuzRashid | Video editor for founders and personal brands">
+<meta property="og:description" content="Videos that make your brand easy to understand and hard to scroll past. SaaS demos, motion graphics, long-form and reels.">
+<meta property="og:image" content="og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232B3BFF'/%3E%3Cpath d='M11 9v14M21 9v14M11 16h10' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ECEEF1; --ink:#101318; --muted:#555C69; --line:#CBD0D8; --accent:#2B3BFF; --slot:#DDE1E7;
+  --head:"Inter Tight","Inter","Helvetica Neue",Arial,sans-serif;
+  --body:"Inter","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#12141A; --ink:#ECEEF2; --muted:#9AA1AE; --line:#2A2E38; --accent:#7C88FF; --slot:#1B1E27;}
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.05rem;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
+.logo{font-family:var(--head);font-weight:700;font-size:1.15rem;text-decoration:none;letter-spacing:-.01em}
+.top nav{display:flex;gap:24px;font-family:var(--head);font-weight:500;font-size:.98rem}
+.top nav a{text-decoration:none;color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding:56px 0 40px}
+h1{font-family:var(--head);font-weight:700;font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.02;letter-spacing:-.025em;margin:0 0 24px;max-width:18ch}
+.hero p.lead{font-size:1.2rem;color:var(--muted);max-width:48ch;margin:0 0 28px}
+.hero-top{display:grid;grid-template-columns:1fr 290px;gap:56px;align-items:end}
+.reel{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;background:var(--slot);border:1px solid var(--line)}
+.reel video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.reel button{position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;border:0;background:rgba(16,19,24,.72);color:#fff;font:500 .82rem var(--head);cursor:pointer;backdrop-filter:blur(6px)}
+.reel button:hover{background:var(--accent)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--head);font-weight:500;font-size:1rem;padding:13px 22px;border-radius:999px;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* timeline = services */
+.timeline{position:relative;margin:44px 0 12px;padding-top:30px;cursor:crosshair}
+.tl-ruler{position:absolute;left:0;right:0;top:0;height:18px;background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 24px);opacity:.9}
+.tl-track{display:flex;gap:4px}
+.clip{flex:1;display:flex;flex-direction:column;gap:8px;padding:18px 18px 22px;min-height:150px;border-radius:6px;background:var(--slot);border:1px solid var(--line);text-decoration:none;transition:border-color .15s}
+.clip:hover{border-color:var(--accent)}
+.clip strong{font-family:var(--head);font-weight:700;font-size:1.2rem;letter-spacing:-.01em;line-height:1.2}
+.clip span{color:var(--muted);font-size:.98rem;line-height:1.5}
+.playhead{position:absolute;top:0;height:46px;left:var(--x,18%);width:2px;background:var(--accent);pointer-events:none;z-index:2}
+.playhead::before{content:"";position:absolute;top:0;left:-6px;width:14px;height:12px;background:var(--accent);clip-path:polygon(0 0,100% 0,50% 100%)}
+.proof{font-size:1.05rem;color:var(--muted);margin:20px 0 0}
+.proof a{color:var(--ink)}
+
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--head);font-weight:700;font-size:clamp(1.7rem,3.6vw,2.4rem);letter-spacing:-.02em;line-height:1.1;margin:0 0 36px}
+h3{font-family:var(--head);font-weight:700;font-size:1.25rem;margin:0 0 6px;letter-spacing:-.01em}
+p{margin:0}
+
+
+/* work */
+.work{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.slot{display:block;text-decoration:none;scroll-margin-top:24px;color:inherit}
+.slot[href="#"]{pointer-events:none}
+.frame{position:relative;overflow:hidden;background:var(--slot);border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;color:var(--muted);font-family:var(--head);font-size:.95rem;transition:border-color .15s}
+.slot:hover .frame{border-color:var(--accent)}
+.frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.frame .play{position:absolute;left:12px;bottom:12px;display:flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:rgba(16,19,24,.72);color:#fff;font:500 .82rem var(--head);backdrop-filter:blur(6px);transition:background .15s}
+.frame .play::before{content:"";width:0;height:0;border-left:8px solid #fff;border-top:5px solid transparent;border-bottom:5px solid transparent}
+.slot:hover .play{background:var(--accent)}
+button.slot{width:100%;padding:0;border:0;background:none;text-align:left;font:inherit;cursor:pointer}
+
+/* full-size player */
+.player{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100vw;height:100vh;height:100dvh;display:grid;place-items:center}
+.player:not([open]){display:none}
+.player::backdrop{background:rgba(10,12,16,.92)}
+.player video{max-width:min(92vw,1200px);max-height:86vh;border-radius:10px;background:#000;outline:0}
+.player .close{position:fixed;top:18px;right:20px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font:400 1.4rem/1 var(--body);cursor:pointer}
+.player .close:hover{background:var(--accent)}
+.v .frame{aspect-ratio:9/16}
+.w{grid-column:1/-1}
+.w .frame{aspect-ratio:16/9}
+.reels-row{display:contents}
+
+.how{display:grid;grid-template-columns:repeat(2,1fr);gap:40px}
+.how p{color:var(--muted)}
+.about{max-width:60ch;font-size:1.15rem}
+
+.contact{padding:96px 0 72px}
+.contact h2{font-size:clamp(2rem,5.5vw,3.6rem);max-width:16ch;margin-bottom:28px}
+.contact .btns{margin-bottom:8px}
+footer{padding:28px 0 48px;color:var(--muted);font-size:.95rem;border-top:1px solid var(--line)}
+
+/* scroll animation: fade and rise once, plus a page progress line */
+.js :is(.hero h1,.hero .lead,.hero .btns,.hero .reel,.hero .timeline,.hero .proof,section h2,.slot,.how>div,.about,.contact .btns){opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;transition-delay:var(--d,0s)}
+.js :is(.hero h1,.hero .lead,.hero .btns,.hero .reel,.hero .timeline,.hero .proof,section h2,.slot,.how>div,.about,.contact .btns).in{opacity:1;transform:none}
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:50;pointer-events:none}
+@media (prefers-reduced-motion:reduce){
+  .js :is(.hero h1,.hero .lead,.hero .btns,.hero .reel,.hero .timeline,.hero .proof,section h2,.slot,.how>div,.about,.contact .btns){opacity:1;transform:none;transition:none}
+  .progress{display:none}
+}
+@media (max-width:760px){
+  .how{grid-template-columns:1fr;gap:28px}
+  .hero-top{grid-template-columns:1fr;gap:28px}
+  .reel{aspect-ratio:9/16;max-width:300px;border-radius:12px}
+  /* phones: keep the timeline, scroll the clips sideways */
+  .timeline{margin:36px -24px 12px;padding:30px 0 0}
+  .tl-ruler{left:24px;right:0}
+  .tl-track{overflow-x:auto;padding:0 24px;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .tl-track::-webkit-scrollbar{display:none}
+  .clip{flex:0 0 78vw;max-width:320px;min-height:0;scroll-snap-align:start}
+  .playhead{left:var(--x,calc(24px + 18%))}
+  .work{grid-template-columns:1fr}
+  /* reels: full 9:16 frame, scroll sideways like the timeline */
+  .reels-row{display:flex;align-items:flex-start;gap:16px;margin:0 -24px;padding:0 24px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .reels-row::-webkit-scrollbar{display:none}
+  .reels-row .slot{flex:0 0 68vw;max-width:300px;scroll-snap-align:start}
+  /* cards off to the right would otherwise rise one by one as you swipe */
+  .js .reels-row .slot{opacity:1;transform:none;transition:none}
+  .hero{padding-top:40px}
+  .top nav{gap:16px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+<script>document.documentElement.className+=" js"</script>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#top">HuzRashid</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div class="hero-top">
+        <div>
+          <h1>Videos that make your brand easy to understand and hard to scroll past.</h1>
+          <p class="lead">I'm HuzRashid. I edit SaaS demos, motion graphics, long-form content and reels for founders, personal brands and small businesses.</p>
+          <div class="btns">
+            <a class="btn primary" href="#work">See my work</a>
+            <a class="btn" href="mailto:heyhuzrashid@gmail.com">Email me</a>
+          </div>
+        </div>
+        <div class="reel">
+          <video id="reel" src="hero.mp4" poster="hero.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Short reel of my editing"></video>
+          <button type="button" id="sound" aria-pressed="false">Sound on</button>
+        </div>
+      </div>
+
+      <div class="timeline" id="timeline">
+        <div class="tl-ruler" aria-hidden="true"></div>
+        <div class="tl-track">
+          <a class="clip a" href="#demo"><strong>SaaS and motion graphic demos</strong><span>Product walkthroughs and explainers that show what your product does in the first few seconds.</span></a>
+          <a class="clip b" href="#long-form"><strong>Long-form edits</strong><span>YouTube videos, podcasts and talks cut for pacing and clarity, so viewers stay to the end.</span></a>
+          <a class="clip c" href="#reels"><strong>Reels and short-form</strong><span>Hook-first reels for Instagram, Shorts and LinkedIn.</span></a>
+        </div>
+        <div class="playhead" id="playhead" aria-hidden="true"></div>
+      </div>
+      <p class="proof">I grew my own Instagram to 13k followers in 5 months, so I know what keeps people watching. <a href="https://www.instagram.com/huzrashid" target="_blank" rel="noopener">@huzrashid</a></p>
+    </div>
+
+    <section id="work">
+      <h2>Work</h2>
+      <!-- TO ADD A SAMPLE: copy the first block. data-video is the web mp4 in /work,
+           poster is its still. The clip previews muted on the page and plays with sound on click. No caption. -->
+      <div class="work">
+        <button class="slot w" id="demo" type="button" data-video="work/promo-1.mp4" aria-label="Play dating app promo">
+          <div class="frame">
+            <video src="work/promo-1.mp4" poster="work/promo-1.jpg" muted loop playsinline preload="none"></video>
+            <span class="play">Play with sound</span>
+          </div>
+        </button>
+        <button class="slot w" id="long-form" type="button" data-video="work/longform-1.mp4" aria-label="Play YouTube video for a business educator">
+          <div class="frame">
+            <video src="work/longform-1.mp4" poster="work/longform-1.jpg" muted loop playsinline preload="none"></video>
+            <span class="play">Play with sound</span>
+          </div>
+        </button>
+        <div class="reels-row">
+        <button class="slot v" id="reels" type="button" data-video="work/reel-1.mp4" aria-label="Play business coach reel">
+          <div class="frame">
+            <video src="work/reel-1.mp4" poster="work/reel-1.jpg" muted loop playsinline preload="none"></video>
+            <span class="play">Play with sound</span>
+          </div>
+        </button>
+        <button class="slot v" type="button" data-video="work/reel-2.mp4" aria-label="Play real estate reel">
+          <div class="frame">
+            <video src="work/reel-2.mp4" poster="work/reel-2.jpg" muted loop playsinline preload="none"></video>
+            <span class="play">Play with sound</span>
+          </div>
+        </button>
+        <button class="slot v" type="button" data-video="work/reel-3.mp4" aria-label="Play founder story reel">
+          <div class="frame">
+            <video src="work/reel-3.mp4" poster="work/reel-3.jpg" muted loop playsinline preload="none"></video>
+            <span class="play">Play with sound</span>
+          </div>
+        </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <h2>How I work</h2>
+      <div class="how">
+        <div>
+          <h3>Attention to detail</h3>
+          <p>Audio levels, captions, pacing and brand consistency get checked before anything is delivered.</p>
+        </div>
+        <div>
+          <h3>Reliable</h3>
+          <p>Clear timelines, regular updates, and no disappearing mid-project.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About</h2>
+      <p class="about">I'm a video editor based in Delhi. I work with founders who want video that does a job, not just looks good.</p>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Have a video to make?</h2>
+      <div class="btns">
+        <a class="btn primary" href="mailto:heyhuzrashid@gmail.com">heyhuzrashid@gmail.com</a>
+        <a class="btn" href="https://www.instagram.com/huzrashid" target="_blank" rel="noopener">DM on Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy; 2026 HuzRashid</footer>
+</div>
+
+<dialog class="player" id="player" aria-label="Video player">
+  <button class="close" type="button" id="player-close" aria-label="Close">&times;</button>
+  <video id="player-video" controls playsinline></video>
+</dialog>
+
+<script>
+(function(){
+  var tl=document.getElementById('timeline'),ph=document.getElementById('playhead');
+  if(tl&&ph){
+    var move=function(e){
+      var r=tl.getBoundingClientRect();
+      var x=Math.min(Math.max(e.clientX-r.left,0),r.width-2);
+      ph.style.setProperty('--x',x+'px');
+    };
+    tl.addEventListener('pointermove',move);
+    tl.addEventListener('pointerdown',move);
+    // on touch screens the playhead follows the sideways scroll instead
+    var track=tl.querySelector('.tl-track');
+    if(track&&matchMedia('(hover:none)').matches){
+      track.addEventListener('scroll',function(){
+        var max=track.scrollWidth-track.clientWidth;
+        var p=max>0?track.scrollLeft/max:0;
+        var r=tl.getBoundingClientRect();
+        ph.style.setProperty('--x',(24+p*(r.width-26))+'px');
+      },{passive:true});
+    }
+  }
+
+  // scroll reveal: elements fade and rise once as they enter the screen
+  var SEL='.hero h1,.hero .lead,.hero .btns,.hero .reel,.hero .timeline,.hero .proof,section h2,.slot,.how>div,.about,.contact .btns';
+  var els=[].slice.call(document.querySelectorAll(SEL));
+  els.forEach(function(el){
+    var group=[].slice.call(el.parentNode.children).filter(function(c){return c.matches(SEL)});
+    var i=group.indexOf(el);
+    el.style.setProperty('--d',(el.closest('.hero')?i*0.1:Math.min(i%3,2)*0.08)+'s');
+  });
+  document.querySelector('.hero .reel').style.setProperty('--d','0.25s');
+
+  // hero reel: muted loop, one tap for sound
+  var v=document.getElementById('reel'),snd=document.getElementById('sound');
+  if(v&&snd){
+    snd.addEventListener('click',function(){
+      v.muted=!v.muted;
+      if(!v.muted){v.currentTime=0;v.play()}
+      snd.textContent=v.muted?'Sound on':'Sound off';
+      snd.setAttribute('aria-pressed',String(!v.muted));
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+      });
+    },{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  }else{
+    els.forEach(function(el){el.classList.add('in')});
+  }
+
+  // work samples: muted preview while on screen, full player with sound on click
+  var previews=[].slice.call(document.querySelectorAll('.frame video'));
+  if('IntersectionObserver' in window&&previews.length){
+    var pio=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var pv=en.target;
+        if(en.isIntersecting){pv.play().catch(function(){})}else{pv.pause()}
+      });
+    },{threshold:0.4});
+    previews.forEach(function(pv){pio.observe(pv)});
+  }
+  var dlg=document.getElementById('player'),pvid=document.getElementById('player-video');
+  function closePlayer(){pvid.pause();pvid.removeAttribute('src');pvid.load();if(dlg.open)dlg.close()}
+  if(dlg&&pvid){
+    document.querySelectorAll('.slot[data-video]').forEach(function(s){
+      s.addEventListener('click',function(){
+        pvid.src=s.getAttribute('data-video');
+        dlg.showModal();
+        pvid.play().catch(function(){});
+      });
+    });
+    document.getElementById('player-close').addEventListener('click',closePlayer);
+    dlg.addEventListener('click',function(e){if(e.target===dlg)closePlayer()});
+    dlg.addEventListener('close',closePlayer);
+  }
+
+  // progress line at the top of the page
+  var bar=document.getElementById('progress'),ticking=false;
+  function update(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    var p=h>0?Math.min(Math.max(window.scrollY/h,0),1):0;
+    bar.style.transform='scaleX('+p+')';
+    ticking=false;
+  }
+  window.addEventListener('scroll',function(){
+    if(!ticking){ticking=true;requestAnimationFrame(update)}
+  },{passive:true});
+  update();
+})();
+</script>
+</body>
+</html>
